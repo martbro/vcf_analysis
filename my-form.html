@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database</title>
+</head>
+<body>
+<form action="/" method="POST">
+    <p>
+        <input type="submit" value="Search phenotype :" />
+        <input type="text" name="pheno" />
+        <input type="submit" value="Search source :" />
+        <input type="text" name="source" />
+        <input type="submit" value="Get rid of variant over x% in public DB" />
+        <input type="float" name="freq_cut_off" value="0"/>
+        <input type="submit" value="Allelic fraction should be over x%" />
+        <input type="float" name="all_fraction" value="0"/>
+    </p>
+</form>
+{% block content %}
+<table border = 1>
+    {% for each_item in ('','CHROM','POS','ID','REF','ALT','QUAL','FILTER','AC','AF','DP','FS','Allele','Consequence','IMPACT','SYMBOL','Gene','Feature_type','Feature','BIOTYPE','EXON','INTRON','HGVSc','HGVSp','cDNA_position','CDS_position','Protein_position','Amino_acids','Codons','Existing_variation','DISTANCE','STRAND','FLAGS','SYMBOL_SOURCE','HGNC_ID','CCDS','SIFT','PolyPhen','HGVS_OFFSET','MAX_AF','MAX_AF_POPS','CLIN_SIG','SOMATIC','PHENO','PUBMED','T550_GT','T550AD','T550DP','T550GQ','T550GT','T550PL','gene','pheno','source') %}
+    <td>{{ each_item }}</td>
+    {% endfor %}
+    {% for element in sqlite_query %}
+        <tr>
+            <td>{% for each_item in element %}</td>
+            <td>{{ each_item }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+</body>
+</html>
