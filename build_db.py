@@ -7,10 +7,10 @@ Drops the old gene_pheno table and makes a new one
 import sqlite3
 
 # connect to genome_db.db
-genomes_db = "./genomes_db.db"
+genomes_db = "../genomes_db.db"
 connexion = sqlite3.connect(genomes_db)
 cursor = connexion.cursor()
-
+'''
 # if an old gene_pheno table exists, drop it
 try:
     cursor.execute("DROP TABLE gene_pheno")
@@ -32,6 +32,8 @@ for gene_line in pheno_csv:
         connexion.commit()
     else:
         pass
+'''
+cursor.execute("CREATE INDEX pheno_index ON gene_pheno(pheno)")
 
 cursor.close()
 connexion.close()

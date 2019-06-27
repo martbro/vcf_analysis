@@ -12,7 +12,7 @@ patient_number = 'Patient_T550'
 genomes_db = '../genomes_db.db'
 connexion = sqlite3.connect(genomes_db)
 cursor = connexion.cursor()
-
+'''
 # if a table with the same patient's name already exists, drop it
 try:
     cursor.execute('DROP TABLE ' + patient_number)
@@ -94,6 +94,8 @@ for variant_line in patient_vcftable:
         connexion.commit()
     else:
         pass
+'''
+cursor.execute("CREATE INDEX Patient_T550 ON gene_pheno(gene)")
 
 cursor.close()
 connexion.close()
