@@ -12,7 +12,7 @@ def my_form():
 @app.route('/', methods=['POST'])
 def my_form_post():
     # connect to genomes.db database
-    genomes_db = "./genomes_db.db"
+    genomes_db = "../genomes_db.db"
     connexion = sqlite3.connect(genomes_db)
     cursor = connexion.cursor()
     requested_adapted_pheno = "%" + "%".join(request.form['pheno'].split()) + "%"

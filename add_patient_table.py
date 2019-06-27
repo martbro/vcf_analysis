@@ -9,7 +9,7 @@ patient_vcftable = open('../../Downloads/parsed_vep_haplotypecalled_T550.vcftabl
 patient_number = 'Patient_T550'
 
 # connect to genome_db.db
-genomes_db = './genomes_db.db'
+genomes_db = '../genomes_db.db'
 connexion = sqlite3.connect(genomes_db)
 cursor = connexion.cursor()
 
