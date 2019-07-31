@@ -5,7 +5,7 @@ parse_gatk_variantstotable.py and placed in ~/Downloads/[date]_gene_pheno_source
 
 import sqlite3
 
-patient_vcftable = open('../../Downloads/parsed_vep_haplotypecalled_T550.vcftable', 'r')
+#patient_vcftable = open('../../Downloads/parsed_vep_haplotypecalled_T550.vcftable', 'r')
 patient_number = 'Patient_T550'
 
 # connect to genome_db.db
@@ -95,7 +95,7 @@ for variant_line in patient_vcftable:
     else:
         pass
 '''
-cursor.execute("CREATE INDEX Patient_T550 ON gene_pheno(gene)")
+cursor.execute("CREATE INDEX gene_index ON Patient_T550(Gene)")
 
 cursor.close()
 connexion.close()

@@ -32,8 +32,10 @@ for gene_line in pheno_csv:
         connexion.commit()
     else:
         pass
-'''
+
 cursor.execute("CREATE INDEX pheno_index ON gene_pheno(pheno)")
+'''
+cursor.execute("CREATE INDEX gene_pheno_gene_index ON gene_pheno(gene)")
 
 cursor.close()
 connexion.close()
