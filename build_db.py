@@ -12,14 +12,13 @@ engine = sqlalchemy.create_engine("sqlite:///../genomes_db.db")
 # if an old gene_pheno table exists, drop it
 engine.execute("DROP TABLE IF EXISTS gene_pheno")
 
-# make a new gene_pheno table and index specified columns
+# make a new gene_pheno table
 metadata = sqlalchemy.MetaData()
 gene_pheno = sqlalchemy.Table('gene_pheno', metadata,
                               sqlalchemy.Column('gene', sqlalchemy.String),
                               sqlalchemy.Column('pheno', sqlalchemy.String),
                               sqlalchemy.Column('source', sqlalchemy.String),
                               )
-sqlalchemy.Index("gene_pheno_gene_index", gene_pheno.columns.gene)
 
 # Tell the MetaData we’d actually like to create our selection of tables for real inside the SQLite database
 metadata.create_all(engine)
@@ -36,4 +35,6 @@ for gene_line in pheno_csv:
     else:
         pass
 
+# Index specified column
+sqlalchemy.Index("gene_pheno_gene_index", gene_pheno.columns.gene)
 connection.close()
